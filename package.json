@@ -1,0 +1,19 @@
+{
+  "name": "nxtRICfileUtil",
+  "version": "1.0.0",
+  "description": "this is a nodejs module for reading/writing .ric files",
+  "main": "src",
+  "scripts": {
+    "test": "node tests"
+  },
+  "keywords": [],
+  "author": "RedMan13",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^18.0.6"
+  },
+  "devDependencies": {
+    "eslint": "5.3.0",
+    "eslint-config-scratch": "5.1.0"
+  }
+}
