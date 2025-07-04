@@ -59,12 +59,13 @@ class VarMap extends Generic {
         return [this.readEndian(bufLoc), this.readEndian(bufLoc +1)]
     }
     mapOut(val) {
-        let start = [0, 0];
-        let end = this.at(-1)
-        for (let i = 0; i < this.numSteps; i++) {
-            const [step, map] = this.at(i);
-            if (step <= val) start = [step, map];
-            if (step >= val) end = [step, map];
+        let start = this.at(0);
+        let end = null;
+        if (val < start[0]) return start[1];
+        for (let i = 1; i < this.numSteps; i++) {
+            end = this.at(i);
+            if (end[0] < val) break;
+            start = end;
         }
 
         return ((end[1] - start[1]) * ((val - start[0]) / (end[0] - start[0]))) + start[1];

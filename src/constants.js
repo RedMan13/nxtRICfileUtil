@@ -26,7 +26,7 @@ const indexNames = [
     ['type', 'opts', 'x', 'y'],
     ['type', 'opts', 'startX', 'startY', 'endX', 'endY'],
     ['type', 'opts', 'x', 'y', 'width', 'height'],
-    ['type', 'opts', 'x', 'y', 'radious'],
+    ['type', 'opts', 'x', 'y', 'radius'],
     ['type', 'opts', 'x', 'y', 'value']
 ];
 

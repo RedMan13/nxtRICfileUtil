@@ -1,6 +1,8 @@
-const { typeNames, indexNames } = require('./constants')
+const { typeNames, indexNames } = require('./constants');
+const { RawInteger } = require('./elements/CrossReference');
 
 function stringValue(bitsOrClass) {
+    if (bitsOrClass instanceof RawInteger) return bitsOrClass.toString();
     const isClass = typeof bitsOrClass !== 'number';
     const variable = isClass 
         ? bitsOrClass.variable?.id ?? 0 
@@ -43,7 +45,7 @@ function stringElement(buf) {
                 const byte = Math.floor(xy / 8);
                 const bit = 8 - ((xy % 8) + 1);
                 text += (buf[byte] >> bit) & 1
-                    ? '11'
+                    ? '██'
                     : '  ';
             }
             text += '|\n'

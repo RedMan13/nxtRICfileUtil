@@ -31,7 +31,7 @@ class Sprite extends Generic {
         const diff = val - (this.width / 8);
         for (let y = 0; y < this.height; y++) {
             if (diff > 0) this.expandBuffer(diff, (y * this.width) + this.width + this.length);
-            else this.shrinkBuffer(-diff, (y * this.width) + this.width + this.length)
+            else this.shrinkBuffer(-diff, (y * this.width) + this.width + this.length);
         }
         this.encodeEndian(3, val);
     }
@@ -42,9 +42,9 @@ class Sprite extends Generic {
         this.encodeEndian(2, val);
     }
     pixel(x, y, set) {
-        const xy = (x + (y * this.width)) + this.length;
+        const xy = (x + ((this.height - y -1) * this.width)) + (this.length * 16);
         const byte = Math.floor(xy / 8);
-        const bit = xy % 9;
+        const bit = 8 - ((xy % 8) + 1);
         if (typeof set !== 'undefined') {
             const mask = 0xff ^ (1 << bit);
             const masked = (this.buf[byte] & mask)

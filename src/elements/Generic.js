@@ -1,5 +1,5 @@
 const { typeNames,  indexNames } = require('../constants.js');
-const { stringElement } = require('../Stringify.js')
+const { stringElement } = require('../stringify.js')
 const CrossReference = require('./CrossReference.js');
 
 class Generic {
@@ -19,7 +19,7 @@ class Generic {
     parseValue(i) {
         const toParse = this.readEndian(i);
         const special = !!((toParse & 0xf000) >> 12);
-        if (!special) return toParse & 0x0fff;
+        if (!special) return new CrossReference.RawInteger(toParse & 0x0fff);
         return new CrossReference(toParse, this.info);
     }
     expandBuffer(size, idx) {
